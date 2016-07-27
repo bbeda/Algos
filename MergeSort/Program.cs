@@ -11,7 +11,7 @@ namespace MergeSort
     {
         static void Main(string[] args)
         {
-            var n = 4;
+            var n = 50000000;
             var rand = new Random();
             var array = Enumerable.Range(0, n).Select(v => rand.Next(0, n)).ToArray();
             Console.WriteLine(IsSorted(array));
@@ -27,6 +27,7 @@ namespace MergeSort
             sw.Stop();
 
             Console.WriteLine($"{IsSorted(result)} in {sw.Elapsed.TotalSeconds}");
+            Console.Read();
 
         }
 
@@ -57,8 +58,8 @@ namespace MergeSort
             }
 
 
-            var left = MergeSort(input, start, (length + 1) / 2);
-            var right = MergeSort(input, length / 2, end);
+            var left = MergeSort(input, start, start + length / 2);
+            var right = MergeSort(input, start + length / 2, end);
             var lx = 0;
             var rx = 0;
             var result = new int[length];
