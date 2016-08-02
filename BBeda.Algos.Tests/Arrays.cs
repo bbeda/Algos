@@ -48,8 +48,7 @@ namespace BBeda.Algos.Tests
         [TestCase(10000)]
         [TestCase(100000)]
         [TestCase(1000000)]
-        [TestCase(10000000)]
-        [TestCase(10000000)]
+        [TestCase(10000000)]        
         public void MergeSort(int size)
         {
             var rand = new Random();
