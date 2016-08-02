@@ -48,13 +48,31 @@ namespace BBeda.Algos.Tests
         [TestCase(10000)]
         [TestCase(100000)]
         [TestCase(1000000)]
-        [TestCase(10000000)]        
+        [TestCase(10000000)]
         public void MergeSort(int size)
         {
             var rand = new Random();
             var array = Enumerable.Range(0, size).Select(v => rand.Next(0, size)).ToArray();
             var sorted = array.MergeSort();
             Assert.IsTrue(sorted.IsSorted());
+        }
+
+        [Test]
+        [TestCase(new[] { 10, 7, 9, 6, 4, 2, 1 }, ExpectedResult = 20)]
+        [TestCase(new[] { 3 }, ExpectedResult = 0)]
+        [TestCase(new[] { 3, 3 }, ExpectedResult = 0)]
+        [TestCase(new int[0], ExpectedResult = 0)]
+        [TestCase(new[] { 7, 6, 2, 5 }, ExpectedResult = 5)]
+        [TestCase(new[] { -8, 2, 1, 20, 4 }, ExpectedResult = 2)]
+        [TestCase(new[] { 8, 2, 25, 5, 8 }, ExpectedResult = 4)]
+        [TestCase(new[] { 7, 7, 5, 2 }, ExpectedResult = 5)]
+        [TestCase(new[] { -1, 0, 1 }, ExpectedResult = 0)]
+        [TestCase(new[] { 1, 2, 3, 4 }, ExpectedResult = 0)]
+        [TestCase(new[] { 4, 3, 2, 1 }, ExpectedResult = 6)]
+
+        public int CountInversions(int[] array)
+        {
+            return array.CountInversions();
         }
     }
 }
