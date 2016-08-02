@@ -1,50 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MergeSort
+namespace BBeda.Algos.Arrays
 {
-    class Program
+    public static class ArraysExtensions
     {
-        static void Main(string[] args)
-        {
-            var n = 50000000;
-            var rand = new Random();
-            var array = Enumerable.Range(0, n).Select(v => rand.Next(0, n)).ToArray();
-            Console.WriteLine(IsSorted(array));
-            var sw = new Stopwatch();
-
-            sw.Start();
-            Array.Sort(array);
-            sw.Stop();
-            Console.WriteLine($"{IsSorted(array)} in {sw.Elapsed.TotalSeconds}");
-
-            sw.Restart();
-            var result = MergeSort(array, 0, array.Length);
-            sw.Stop();
-
-            Console.WriteLine($"{IsSorted(result)} in {sw.Elapsed.TotalSeconds}");
-            Console.Read();
-
-        }
-
-        static bool IsSorted(int[] input)
+        public static bool IsSorted(this int[] input)
         {
             for (int i = 1; i < input.Length; i++)
             {
                 if (input[i] < input[i - 1])
-                {
                     return false;
-                }
             }
 
             return true;
         }
 
-        static int[] MergeSort(int[] input, int start, int end)
+        public static int[] MergeSort(this int[] input)
+        {
+            return input.MergeSort(0, input.Length);
+        }
+
+        public static int[] MergeSort(this int[] input, int start, int end)
         {
             var length = end - start;
             if (length == 0)
